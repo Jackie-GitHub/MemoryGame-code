@@ -1,0 +1,21 @@
+@import '../components/basic';
+
+.plate{
+    //background-color: rgba(204, 124, 4, 0.075);
+    position: relative;
+    .plateVideo{
+        width: 80%;
+    };
+    .plateBack{
+        position: absolute;
+        //left:10%;
+        width: 100%;
+        z-index: $Z-Index-backPlate;
+    };
+    .plateOut{
+        position: absolute;
+        //left:-10%;
+        width: 100%;
+        z-index: $Z-Index-outPlate;
+    }
+};
