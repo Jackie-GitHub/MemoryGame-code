@@ -6,62 +6,109 @@
   padding:0;
   margin:0;
   box-sizing: border-box;
+  font-family: 'Dancing Script', cursive;
 }
 .App {
   background-color: rgb(0, 0, 0);
   width: 100vw;
+  min-width: 576px;
   height: 100vh; 
   display: flex;
   align-items: center;
+  justify-content: center;
 };
 
 .content{
   position: relative;
   width: 100vw;
+  min-width: 576px;
+  max-width: 1500px;
   height: 56vw;
+  min-height:0.56*576px;
+  max-height:0.56*1500px;
   display: flex;
   align-items: center;
+  justify-content:center;
 };
 .buttonR{
   position: absolute;
-  top:6%;
-  right:1%;
-  background-color: #dbdbdb;
-  text-transform: capitalize;
-  padding:2px 2px 2px 2px;
-  color:rgb(59, 59, 59);
-  border:1px solid rgb(126, 126, 126);
-  border-radius: 6px;
+  text-transform:uppercase;
+  top:3.5%;
+  right:4.5%;
+  font-size: 60%;
+  color:rgb(90, 61, 32);
+  border-bottom:1px solid rgba(90, 61, 32, 0.767);
+  text-shadow: 0px 1px 0px rgba(226, 226, 226, 0.5);
   :hover{
-    cursor:pointer;
+    cursor: pointer;
   }
+}
+
+.youwin{ 
+  position: absolute;
+  font-size: 3rem;
+  border-radius: .5rem;
+  padding: 0 1rem 0 1rem;
+  text-transform: uppercase;
+  color:rgb(80, 45, 11);
+  background-color:rgba(255, 255, 255, 0.4);
+  text-shadow: 0px 2px 0px rgba(226, 226, 226, 0.699);
 }
 .theVideo {
   width: 100%;
   height: 100%;
 };
 
-.platesWrap{
+.scroll{
   position:absolute;
-  top:17%;    //top left width height need to update accroding to final result
+  top:12.5%;    
   left:28%;
   width: 44%;
-  height: 70%;
-  //border:1px solid black;
+  height: 75%;
+  transition:opacity 2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title{
+    font-weight: 600;
+    font-size:100%;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+  }
+  .description{
+   margin:auto 1rem auto 1rem;
+   line-height: 120%;
+   font-size:78%;
+  }
+  .copyRight{
+    align-self:flex-end;
+    font-size:78%;
+    &:before{
+      display: inline-block;
+      content: "";
+      border-top: 1px solid black;
+      width: 1.5rem;
+      margin: 0 4px;
+      transform: translateY(-.2rem);
+    }
+    a{
+      text-decoration: none;
+      color:black;
+      font-weight: 700;
+      border-bottom: 1px dotted rgb(77, 76, 76);
+    }
+  }
   .plates{
     width:100%;
-    height: 100%;
+    height: 95%;
     display: grid;
-    transition:opacity 1s;
-    //background-color: rgba(0, 128, 0, 0.171);
+    margin:6px auto 6px auto;
     grid-template-columns:repeat(4, 25%);
     grid-template-rows:repeat(3, 33.3%);
     perspective:1000px;                 //flip related (create 3d space)
     .plate{
-      //background-color: rgba(204, 124, 4, 0.075);
       position:relative;
-      margin:3% 8% 3% 8%;
-      //transform:scale(1);
+      margin:1% 4% 1% 4%;
       transform-style:preserve-3d;      //flip related s(create 3d space)
       transition:transform .5s;
       img{
@@ -70,10 +117,13 @@
         height: auto;
         backface-visibility: hidden;     //flip related (without it still work)
       }
-      // &:active{
-      //   transform:scale(0.97);
-      //   transition:transform .2s;
-      // }
+      :hover{
+        cursor: pointer;
+      }
+      :active{
+        transform:scale(0.97);
+        transition:transform .2s;
+      }
       :first-child{
         transform:rotateY(180deg);       //flip related (flip front image)
       }
@@ -84,21 +134,125 @@
   }
 };
 
-
-.wallPainting{
+.wallPaintings{
   position:absolute;
-  top:33.4%;    
-  width: 11.8%;
-  img{
-    width: 100%;
-    opacity:.8;
+  top:34.1%;    
+  width: 11.1%;
+  z-index: 2;
+  .paintings{
+    position: relative;
+    .painting{
+      position:absolute;
+      top:0;
+      left:0;
+      transition:opacity .8s;
+      img{
+        width: 100%;
+      }
+      .paintingInfo{
+        margin-top:32%;
+        transform: translateX(-25%);
+        width:110%;
+        color:rgb(150, 150, 150);
+        font-size: 35%;
+        line-height: 140%;
+        :hover{
+          transform-origin:center left;
+          transform:scale(1.5); 
+          transition:transform .5s;
+        }
+      }
+    }
   }
+  
 };
 
 .wallPaintingleft{
-  left:7.5%;
+  left:6.6%;
 };
 
 .wallPaintingright{
-  right:6.8%;
+  right:6.9%;
+};
+
+@media (min-width: 768px) {
+  .buttonR{
+    font-size: 80%;
+  }
+  .wallPaintings{
+    .paintings{
+      .painting{
+        .paintingInfo{
+          font-size: 60%;
+        }
+      }
+    }
+  }
+  .scroll{
+    .title{
+      font-size:130%;
+    }
+    .description{
+      font-size:95%;
+    }
+    .copyRight{
+      font-size:90%;
+      &:before{
+        width: 2rem;
+      }
+    }
+    .plates{  
+      .plate{
+        margin:1% 3% 1% 3%;
+      };
+    }
+  };
+  .youwin{ 
+    font-size: 4rem;
+    padding: 0 2rem 0 2rem;
+  }
+};
+
+@media (min-width: 992px) {
+  .buttonR{
+    font-size: 100%;
+  }
+  .scroll{
+    .title{
+      font-size:160%;
+    }
+    .description{
+      font-size:100%;
+    }
+    .plates{  
+      .plate{
+        margin:1% 2% 1% 2%;
+      };
+    }
+  };
+  .youwin{ 
+    font-size: 5rem;
+  }
+};
+
+@media (min-width: 1200px) {
+  .buttonR{
+    font-size: 110%;
+  }
+  .scroll{
+    .title{
+      font-size:180%;
+    }
+    .description{
+      font-size:120%;
+    }
+    .plates{  
+      .plate{
+        margin:1% 1% 1% 1%;
+      };
+    }
+  };
+  .youwin{ 
+    font-size: 7rem;
+  }
 };
