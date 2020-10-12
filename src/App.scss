@@ -1,3 +1,5 @@
+
+
 .hide{
   display: none;
 }
@@ -6,7 +8,6 @@
   padding:0;
   margin:0;
   box-sizing: border-box;
-  font-family: 'Dancing Script', cursive;
 }
 .App {
   background-color: rgb(0, 0, 0);
@@ -16,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Dancing Script', cursive;
 };
 
 .content{
@@ -48,12 +50,60 @@
   position: absolute;
   font-size: 3rem;
   border-radius: .5rem;
-  padding: 0 1rem 0 1rem;
+  padding: 0 .5rem 0 .5rem;
   text-transform: uppercase;
   color:rgb(80, 45, 11);
-  background-color:rgba(255, 255, 255, 0.4);
+  background-color:rgba(255, 255, 255, 0.35);
   text-shadow: 0px 2px 0px rgba(226, 226, 226, 0.699);
 }
+
+.modal{
+  position: absolute;
+}
+.backdrop{
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index:4;
+};
+.modal-content{
+  z-index:5;
+  position:relative;
+  height: 42vw;
+  max-height: 0.42*1500px;
+  min-height: 0.42*576px;
+  width: 47vw;
+  max-width: 0.47*1500px;
+  min-width: 0.47*576px;
+  transition: transform 0.8s;
+}
+.paintingDetails{
+  height: 100%;
+  display: flex;
+  color:rgb(235, 235, 235);
+  font-family:'Roboto','Arial', sans-serif;
+  border:4px rgb(90, 61, 32) double;
+  background-color: rgba(90, 61, 32, 0.5);
+  a{
+    width: 52%;
+  }
+  img{
+    height:100%;
+  }
+  .paintingDetailsInfo{
+    display: flex;
+    padding:.2rem;
+    flex-direction: column;
+    font-size: 55%;
+    p{
+      margin-top:.5rem;
+    }
+  }
+}
+
 .theVideo {
   width: 100%;
   height: 100%;
@@ -136,8 +186,8 @@
 
 .wallPaintings{
   position:absolute;
-  top:34.1%;    
-  width: 11.1%;
+  top:34%;    
+  width: 11.5%;
   z-index: 2;
   .paintings{
     position: relative;
@@ -146,21 +196,24 @@
       top:0;
       left:0;
       transition:opacity .8s;
+      display: flex;
+      flex-direction: column;
       img{
         width: 100%;
       }
       .paintingInfo{
-        margin-top:32%;
-        transform: translateX(-25%);
-        width:110%;
+        margin-top:26%;
+        transform: translateX(-15%);
+        width:150%;
         color:rgb(150, 150, 150);
-        font-size: 35%;
-        line-height: 140%;
-        :hover{
-          transform-origin:center left;
-          transform:scale(1.5); 
+        font-size: 5%;
+        &:hover{
+          transform:scale(1.1) translateX(-9%); 
           transition:transform .5s;
         }
+      }
+      &:hover{
+        cursor: pointer;
       }
     }
   }
@@ -168,11 +221,11 @@
 };
 
 .wallPaintingleft{
-  left:6.6%;
+  left:6.4%;
 };
 
 .wallPaintingright{
-  right:6.9%;
+  right:6.6%;
 };
 
 @media (min-width: 768px) {
@@ -209,13 +262,31 @@
   };
   .youwin{ 
     font-size: 4rem;
-    padding: 0 2rem 0 2rem;
+    padding: 0 1rem 0 1rem;
+  }
+  .paintingDetails{
+    .paintingDetailsInfo{
+      padding:.5rem;
+      font-size: 65%;
+      p{
+        margin-top:1rem;
+      }
+    }
   }
 };
 
 @media (min-width: 992px) {
   .buttonR{
     font-size: 100%;
+  }
+  .wallPaintings{
+    .paintings{
+      .painting{
+        .paintingInfo{
+          font-size: 70%;
+        }
+      }
+    }
   }
   .scroll{
     .title{
@@ -233,11 +304,29 @@
   .youwin{ 
     font-size: 5rem;
   }
+  .paintingDetails{
+    .paintingDetailsInfo{
+      padding:1rem;
+      font-size: 80%;
+      p{
+        margin-top:2rem;
+      }
+    }
+  }
 };
 
 @media (min-width: 1200px) {
   .buttonR{
     font-size: 110%;
+  }
+  .wallPaintings{
+    .paintings{
+      .painting{
+        .paintingInfo{
+          font-size: 90%;
+        }
+      }
+    }
   }
   .scroll{
     .title{
@@ -253,6 +342,15 @@
     }
   };
   .youwin{ 
-    font-size: 7rem;
+    font-size: 6rem;
+  }
+  .paintingDetails{
+    .paintingDetailsInfo{
+      padding:1rem;
+      font-size: 100%;
+      p{
+        margin-top:3rem;
+      }
+    }
   }
 };

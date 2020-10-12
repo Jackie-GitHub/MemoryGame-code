@@ -69,7 +69,7 @@ class Plates extends React.Component {
                 this.onclickHandle[id] = false;   //frozen the two matched plates
                 setTimeout(()=>{this.props.updateWallPaintingNo(group)}, 400)  //update Wall paintings
                 if (this.count === 5) { //check if the game is done
-                    setTimeout(()=>{this.youWin()}, 500);
+                    setTimeout(()=>{this.youWin()}, 1000);
                 } else{ 
                     this.firstClickGoup='';
                     this.firstClickId='';

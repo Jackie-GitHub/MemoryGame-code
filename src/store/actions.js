@@ -1,1 +1,3 @@
 export const UPDATEPAINTINGNO = 'UPDATEPAINTINGNO';
+export const SHOWMODAL = 'SHOWMODAL';
+export const HIDEMODAL = 'HIDEMODAL';
